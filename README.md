@@ -17,4 +17,4 @@ This web component uses the [Polymer](http://www.polymer-project.org).
 ## Example
 `<google-doc key="1dOEs7hBddMhZsuOGJ7J8ku5FhYdD2Ox_iZo-v23j_Ho"></google-doc>``
 
-## [Demo](http://gnestor.github.io/google-doc/demo.html)
+## [Demo](http://gnestor.github.io/google-doc/components/google-doc/demo.html)
