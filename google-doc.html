@@ -1,0 +1,49 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../core-ajax/core-ajax.html">
+
+<!--
+Import a published (public) Google Doc into a webpage.
+
+##### Example
+
+    <google-doc key="1dOEs7hBddMhZsuOGJ7J8ku5FhYdD2Ox_iZo-v23j_Ho"></google-doc>
+
+@element google-doc
+@blurb Import a published (public) Google Doc into a webpage.
+@status alpha
+@homepage http://gnestor.github.io/google-doc
+-->
+<polymer-element name="google-doc" attributes="key">
+
+  <template>
+
+    <link rel="stylesheet" href="google-doc.css" />
+
+    <core-ajax id="ajax" url="https://docs.google.com/document/d/{{key}}/pub" auto handleAs="document" on-core-response="{{render}}"></core-ajax>
+
+    <div id="content"></div>
+
+  </template>
+
+  <script>
+
+    Polymer({
+      /**
+       * The key of the document. This can be found in the URL when viewing the document in Google Docs (e.g. docs.google.com/document/d/<KEY>/edit).
+       * The document must be published. For more info about publishing a Google Doc, see https://support.google.com/docs/answer/37579?hl=en
+       *
+       * @attribute key
+       * @type string
+       */
+
+      render: function(e) {
+        var doc = e.detail.response.body;
+        var content = doc.querySelector('#contents');
+        this.$.content.appendChild(content.cloneNode(true));
+      }
+
+    });
+
+  </script>
+
+</polymer-element>
