@@ -5,10 +5,6 @@ A web component to import Google Doc content into a webpage.
 
 See the [component page](http://gnestor.github.io/google-doc) for more information.
 
-# Markdown component
-
-A simple markdown component that uses the Showdown.js library
-
 ## How to use
 
 This web component uses the [Polymer](http://www.polymer-project.org).
