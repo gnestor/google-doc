@@ -13,7 +13,7 @@ Import a published (public) Google Doc into a webpage.
 @status alpha
 @homepage http://gnestor.github.io/google-doc
 -->
-<polymer-element name="google-doc" attributes="key">
+<polymer-element name="google-doc" attributes="key styles">
 
   <template>
 
@@ -21,7 +21,7 @@ Import a published (public) Google Doc into a webpage.
 
     <core-ajax id="ajax" url="https://docs.google.com/document/d/{{key}}/pub" auto handleAs="document" on-core-response="{{render}}"></core-ajax>
 
-    <div id="content"></div>
+    <content id="content"></content>
 
   </template>
 
@@ -34,11 +34,20 @@ Import a published (public) Google Doc into a webpage.
        *
        * @attribute key
        * @type string
+       *
+       * Include CSS styles from document?
+       *
+       * @attribute styles
+       * @type boolean
        */
 
       render: function(e) {
         var doc = e.detail.response.body;
         var content = doc.querySelector('#contents');
+        if (typeof this.styles === 'undefined') {
+          var styles = content.firstChild;
+          content.removeChild(styles);
+        }
         this.$.content.appendChild(content.cloneNode(true));
       }
 
