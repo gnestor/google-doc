@@ -29,6 +29,12 @@ Import a published (public) Google Doc into a webpage.
 
     Polymer({
       /**
+       * Fired when the document content is loaded.
+       *
+       * @event doc-loaded
+       */
+
+      /**
        * The key of the document. This can be found in the URL when viewing the document in Google Docs (e.g. docs.google.com/document/d/<KEY>/edit).
        * The document must be published. For more info about publishing a Google Doc, see https://support.google.com/docs/answer/37579?hl=en
        *
@@ -49,6 +55,7 @@ Import a published (public) Google Doc into a webpage.
           content.removeChild(styles);
         }
         this.$.content.appendChild(content.cloneNode(true));
+        this.fire('doc-loaded',content);
       }
 
     });
