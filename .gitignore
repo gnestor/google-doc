@@ -3,3 +3,4 @@ dist
 .sass-cache
 .tmp
 test
+bower_components

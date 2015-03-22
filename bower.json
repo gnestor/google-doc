@@ -1,17 +1,23 @@
 {
   "name": "google-doc",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "keywords": [
     "seed",
     "polymer",
-    "web-components"
+    "web-component",
+    "web-components",
+    "google doc"
+  ],
+  "ignore": [
+    "/.*",
+    "/tests/"
   ],
   "main": "google-doc.html",
   "dependencies": {
-    "polymer": "Polymer/polymer#^0.4.0",
-    "core-ajax": "Polymer/core-ajax#~0.4.2"
+    "polymer": "Polymer/polymer#^0.5.5",
+    "core-ajax": "Polymer/core-ajax#~0.5.5"
   },
   "devDependencies": {
-    "polymer-test-tools": "Polymer/polymer-test-tools#^0.4.0"
+    "web-component-tester": "*"
   }
 }
