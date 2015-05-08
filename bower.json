@@ -1,6 +1,6 @@
 {
   "name": "google-doc",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "keywords": [
     "seed",
     "polymer",
@@ -8,10 +8,7 @@
   ],
   "main": "google-doc.html",
   "dependencies": {
-    "polymer": "Polymer/polymer#^0.5.2",
-    "core-ajax": "Polymer/core-ajax#~0.5.2"
-  },
-  "devDependencies": {
-    "polymer-test-tools": "Polymer/polymer-test-tools#^0.5.2"
+    "polymer": "Polymer/polymer#^0.9.0-rc.1",
+    "iron-ajax": "PolymerElements/iron-ajax#^0.9.0"
   }
 }
