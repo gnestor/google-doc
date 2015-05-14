@@ -10,15 +10,15 @@ Import a published (public) Google Doc into a webpage.
 
 @element google-doc
 @blurb Import a published (public) Google Doc into a webpage.
-@homepage http://smokybob.github.io/google-doc
+@homepage http://gnestor.github.io/google-doc
 -->
 
 <dom-module id="google-doc">
   <link rel="stylesheet" href="google-doc.css" />
   <template>
 
-    <iron-ajax id="ajax" url="{{url}}" auto 
-      handle-as="document" 
+    <iron-ajax id="ajax" url="{{url}}" auto
+      handle-as="document"
       on-response="render"></iron-ajax>
 
     <div id="content"></div>
@@ -28,9 +28,9 @@ Import a published (public) Google Doc into a webpage.
 <script>
 
   Polymer({
-    
+
     is: 'google-doc',
-    
+
     properties: {
       /**
        * The document key
@@ -53,15 +53,15 @@ Import a published (public) Google Doc into a webpage.
          type: Boolean,
          value: true
       },
-      
+
       url: {
         type: String,
         // when `key` or `styles` changes `computeDocUrl` is called once
         // (asynchronously) and the value it returns is stored as `url`
         computed: 'computeDocUrl(key,styles)'
-      } 
+      }
     },
-    
+
     computeDocUrl: function(key,styles){
       return 'https://docs.google.com/document/d/' + key + '/pub';
     },
@@ -74,7 +74,7 @@ Import a published (public) Google Doc into a webpage.
         content.removeChild(styles);
       }
       this.$.content.appendChild(content.cloneNode(true));
-      
+
       this.fire('docLoaded',content);
     }
 
