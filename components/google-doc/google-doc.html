@@ -1,0 +1,83 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-ajax/iron-ajax.html">
+
+<!--
+Import a published (public) Google Doc into a webpage.
+
+##### Example
+
+    <google-doc key="1dOEs7hBddMhZsuOGJ7J8ku5FhYdD2Ox_iZo-v23j_Ho"></google-doc>
+
+@element google-doc
+@blurb Import a published (public) Google Doc into a webpage.
+@homepage http://gnestor.github.io/google-doc
+-->
+
+<dom-module id="google-doc">
+  <link rel="stylesheet" href="google-doc.css" />
+  <template>
+
+    <iron-ajax id="ajax" url="{{url}}" auto
+      handle-as="document"
+      on-response="render"></iron-ajax>
+
+    <div id="content"></div>
+
+  </template>
+</dom-module>
+<script>
+
+  Polymer({
+
+    is: 'google-doc',
+
+    properties: {
+      /**
+       * The document key
+       *
+       * @attribute key
+       * @type String
+       * @default null
+       */
+      key: {
+        type: String,
+        value: null
+      },
+      /**
+       * Include CSS styles from document?
+       *
+       * @attribute styles
+       * @type boolean
+       */
+      styles: {
+         type: Boolean,
+         value: true
+      },
+
+      url: {
+        type: String,
+        // when `key` or `styles` changes `computeDocUrl` is called once
+        // (asynchronously) and the value it returns is stored as `url`
+        computed: 'computeDocUrl(key,styles)'
+      }
+    },
+
+    computeDocUrl: function(key,styles){
+      return 'https://docs.google.com/document/d/' + key + '/pub';
+    },
+
+    render: function(e) {
+      var doc = e.detail.body;
+      var content = doc.querySelector('#contents');
+      if (!this.styles) {
+        var styles = content.firstChild;
+        content.removeChild(styles);
+      }
+      this.$.content.appendChild(content.cloneNode(true));
+
+      this.fire('docLoaded',content);
+    }
+
+  });
+
+</script>
