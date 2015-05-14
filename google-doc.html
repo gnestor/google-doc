@@ -1,5 +1,5 @@
 <link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../iron-ajax/iron-ajax.html">
+<link rel="import" href="../core-ajax/core-ajax.html">
 
 <!--
 Import a published (public) Google Doc into a webpage.
@@ -10,74 +10,49 @@ Import a published (public) Google Doc into a webpage.
 
 @element google-doc
 @blurb Import a published (public) Google Doc into a webpage.
+@status alpha
 @homepage http://gnestor.github.io/google-doc
 -->
+<polymer-element name="google-doc" attributes="key styles">
 
-<dom-module id="google-doc">
-  <link rel="stylesheet" href="google-doc.css" />
   <template>
 
-    <iron-ajax id="ajax" url="{{url}}" auto
-      handle-as="document"
-      on-response="render"></iron-ajax>
+    <link rel="stylesheet" href="google-doc.css" />
 
-    <div id="content"></div>
+    <core-ajax id="ajax" url="https://docs.google.com/document/d/{{key}}/pub" auto handleAs="document" on-core-response="{{render}}"></core-ajax>
+
+    <content id="content"></content>
 
   </template>
-</dom-module>
-<script>
 
-  Polymer({
+  <script>
 
-    is: 'google-doc',
-
-    properties: {
+    Polymer({
       /**
-       * The document key
+       * The key of the document. This can be found in the URL when viewing the document in Google Docs (e.g. docs.google.com/document/d/<KEY>/edit).
+       * The document must be published. For more info about publishing a Google Doc, see https://support.google.com/docs/answer/37579?hl=en
        *
        * @attribute key
-       * @type String
-       * @default null
-       */
-      key: {
-        type: String,
-        value: null
-      },
-      /**
+       * @type string
+       *
        * Include CSS styles from document?
        *
        * @attribute styles
        * @type boolean
        */
-      styles: {
-         type: Boolean,
-         value: true
-      },
 
-      url: {
-        type: String,
-        // when `key` or `styles` changes `computeDocUrl` is called once
-        // (asynchronously) and the value it returns is stored as `url`
-        computed: 'computeDocUrl(key,styles)'
+      render: function(e) {
+        var doc = e.detail.response.body;
+        var content = doc.querySelector('#contents');
+        if (typeof this.styles === 'undefined') {
+          var styles = content.firstChild;
+          content.removeChild(styles);
+        }
+        this.$.content.appendChild(content.cloneNode(true));
       }
-    },
 
-    computeDocUrl: function(key,styles){
-      return 'https://docs.google.com/document/d/' + key + '/pub';
-    },
+    });
 
-    render: function(e) {
-      var doc = e.detail.body;
-      var content = doc.querySelector('#contents');
-      if (!this.styles) {
-        var styles = content.firstChild;
-        content.removeChild(styles);
-      }
-      this.$.content.appendChild(content.cloneNode(true));
+  </script>
 
-      this.fire('docLoaded',content);
-    }
-
-  });
-
-</script>
+</polymer-element>
