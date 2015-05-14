@@ -67,7 +67,7 @@ Import a published (public) Google Doc into a webpage.
     },
 
     render: function(e) {
-      var doc = e.detail.body;
+      var doc = e.detail.response.body;
       var content = doc.querySelector('#contents');
       if (!this.styles) {
         var styles = content.firstChild;
