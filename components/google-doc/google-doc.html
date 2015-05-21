@@ -74,7 +74,6 @@ Import a published (public) Google Doc into a webpage.
         content.removeChild(styles);
       }
       Polymer.dom(this.$.content).appendChild(content.cloneNode(true));
-
       this.fire('docLoaded',content);
     }
 
