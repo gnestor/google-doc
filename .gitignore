@@ -4,3 +4,4 @@ dist
 .tmp
 test
 bower_components
+components
