@@ -1,6 +1,9 @@
 {
   "name": "google-doc",
+<<<<<<< HEAD
   "version": "0.0.3",
+=======
+>>>>>>> origin/gh-pages
   "keywords": [
     "seed",
     "polymer",
@@ -14,6 +17,7 @@
   ],
   "main": "google-doc.html",
   "dependencies": {
+<<<<<<< HEAD
     "polymer": "Polymer/polymer#^0.5.5",
     "core-ajax": "Polymer/core-ajax#~0.5.5"
   },
@@ -30,4 +34,23 @@
   "_source": "git://github.com/gnestor/google-doc.git",
   "_target": "*",
   "_originalSource": "gnestor/google-doc"
+=======
+    "polymer": "Polymer/polymer#^0.9.0",
+    "iron-ajax": "PolymerElements/iron-ajax#^0.9.2"
+  },
+  "resolutions": {
+    "webcomponentsjs": "^0.7.0"
+  },
+  "homepage": "https://github.com/gnestor/google-doc",
+  "_release": "6c9173e139",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "6c9173e139cab1c72dc522e99b1d9e4f4f87fc4f"
+  },
+  "_source": "git://github.com/gnestor/google-doc.git",
+  "_target": "master",
+  "_originalSource": "gnestor/google-doc",
+  "_direct": true
+>>>>>>> origin/gh-pages
 }
