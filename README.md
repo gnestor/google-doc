@@ -16,6 +16,6 @@ This web component uses [Polymer](http://www.polymer-project.org).
 
 1. Install [Polymer](http://www.polymer-project.org) library `bower install Polymer/polymer`
 2. Install google-doc component `bower install google-doc`
-3. Import Polymer script `<script src="/bower_components/platform/platform.js"></script>` then google-doc component `<link rel="import" href="bower_components/google-doc/google-doc.html" />`
+3. Import Polymer script `<script src="/bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>` then google-doc component `<link rel="import" href="bower_components/google-doc/google-doc.html" />`
 4. Use `<google-doc key="<KEY>"></google-doc>` element
 5. Include `styles` attribute to import CSS styles from document (e.g. `<google-doc key="<KEY>" styles></google-doc>`)
