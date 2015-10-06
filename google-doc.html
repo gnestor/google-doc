@@ -43,6 +43,15 @@ Import a published (public) Google Doc into a webpage.
         type: String
       },
       /**
+       * Selector(s) to query against document's contents
+       *
+       * @attribute selector
+       * @type string
+       */
+      selector: {
+         type: String
+      },
+      /**
        * Include CSS styles from document?
        *
        * @attribute styles
@@ -72,13 +81,18 @@ Import a published (public) Google Doc into a webpage.
     },
 
     render: function(e) {
-      var doc = e.detail.response.body;
-      var content = doc.querySelector('#contents');
-      if (!this.styles) {
-        var styles = content.firstChild;
-        content.removeChild(styles);
+      var body = e.detail.response.body;
+      var content = body.querySelector('#contents');
+      if (this.selector) {
+        var selection = content.querySelectorAll(this.selector);
+      } else {
+        if (!this.styles) content.removeChild(content.firstChild);
+        var selection = content.children;
       }
-      Polymer.dom(this.$.content).appendChild(content.cloneNode(true));
+      for (i = 0; i < selection.length; ++i) {
+        if (!this.styles) selection[i].removeAttribute('style');
+        Polymer.dom(this.$.content).appendChild(selection[i].cloneNode(true));
+      }
       this.fire('docLoaded',content);
     }
 
