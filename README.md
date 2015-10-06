@@ -7,15 +7,27 @@ See the [component page](http://gnestor.github.io/google-doc) for more informati
 ## Usage
 `<google-doc key="1dOEs7hBddMhZsuOGJ7J8ku5FhYdD2Ox_iZo-v23j_Ho"></google-doc>`
 
+## Properties
+`<google-doc key="1dOEs7hBddMhZsuOGJ7J8ku5FhYdD2Ox_iZo-v23j_Ho" selector="img" styles></google-doc>`
+#### key
+The key of the Google Doc that can be found in the URL after "https://docs.google.com/document/d/" and before "/edit."
+
+*Note that the Google Doc must be published. To publish a document, go to File > Publish to the web... > Publish.*
+
+#### selector
+A [selector or selectors](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_Started/Selectors) (uses [querySelectorAll](https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelectorAll)) to select only specific elements from your document (e.g. images).
+
+#### styles
+Include to preserve styles from document (defaults to false).
+
 ## Demo
 [http://gnestor.github.io/google-doc/components/google-doc/demo.html](http://gnestor.github.io/google-doc/components/google-doc/demo.html)
 
 ## Install
 
-This web component uses [Polymer](http://www.polymer-project.org).
+This web component requires [Polymer](http://www.polymer-project.org).
 
 1. Install [Polymer](http://www.polymer-project.org) library `bower install Polymer/polymer`
 2. Install google-doc component `bower install google-doc`
 3. Import Polymer script `<script src="/bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>` then google-doc component `<link rel="import" href="bower_components/google-doc/google-doc.html" />`
-4. Use `<google-doc key="<KEY>"></google-doc>` element
-5. Include `styles` attribute to import CSS styles from document (e.g. `<google-doc key="<KEY>" styles></google-doc>`)
+4. Use `<google-doc key="<GOOGLE_DOC_KEY>"></google-doc>` element
